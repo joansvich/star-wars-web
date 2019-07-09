@@ -10,7 +10,6 @@ const main = () => {
   ]
   let rootElement = document.querySelector('#root');
 
-
   const generateLayout = () => {
     layoutInstance = new Layout(rootElement);
     layoutInstance.generate();
@@ -18,10 +17,17 @@ const main = () => {
 
   const generateNavbar = () => {
     navbarInstance = new Navbar(layoutInstance.header, links);
+    navbarInstance.generate();
+  }
+
+  const activateRouter = () => {
+    routerInstance.buildDom(ENTRY_POINT, layoutInstance.main)
   }
 
   generateLayout();
   generateNavbar();
+  activateRouter();
+
 }
 
 window.addEventListener('load', main);
